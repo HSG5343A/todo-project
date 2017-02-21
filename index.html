@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo Project</title>
+</head>
+<body>
+  
+  <input id="input" type="text" placeholder="What needs to be done?">
+  <ul id="list"></ul>
+  
+  <script>
+    // when user hits enter key, print the value of the input box into the list.
+
+    document.body.onkeyup = function(evt) {
+      if(evt.keyCode == 13) {
+        console.log("Enter pressed!");
+
+        var input = document.getElementById('input');
+        console.log(input);
+        console.log(input.value);
+
+        var list = document.getElementById('list');
+
+        // create an <li> that will hold our text
+        var li = document.createElement('li');
+        // create a text node for our text
+        var text = document.createTextNode(input.value);
+        // append the text node to the li node
+        li.appendChild(text);
+        // append the li to our ul
+        list.appendChild(li);
+      }
+
+    };
+
+  </script>
+</body>
+</html>
