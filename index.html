@@ -56,6 +56,7 @@
   </style>
 </head>
 <body>
+
   <input id="todoInput" type="text" placeholder="What needs to be done?" class="textInput">
   <ul id="list"></ul>
   
@@ -82,7 +83,7 @@
         // append the li to our ul
         list.appendChild(li);
         li.onclick = function(e) {
-          this.parentElement.removeChild(this);
+          li.parentElement.removeChild(li);
         }
         input.value = '';
       }
