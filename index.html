@@ -3,25 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <title>Todo Project</title>
+  <style>
+    html{
+      font-family: "Avenir Next", Helevetica, sans-serif;
+      text-align: center;
+    }
+
+    body {
+      max-width: 800px;
+      margin: 0 auto;
+    } 
+
+    input {
+      padding-top: 30px;
+      width: 500px;
+      font-size: 40px;
+      border: 0;
+    }
+
+    input:focus {
+      outline:none;
+    }
+    button{
+      display-inline-block;
+      border:1px solid #CCC;
+      background:#EAEAEA;
+      height:60px;
+      font-size:24px;
+      padding:20px 40px;
+      line-height: 1;
+      border-radius:5px;
+      cursor:pointer;
+    }
+    li { 
+      text-align: left;
+      font-size: 40px;
+      list-style: none;
+      margin: 0;
+    }
+
+    li:hover {
+      text-decoration: line-through;
+      cursor:pointer;
+    }
+    #list {
+      background:#EAEAEA;
+      padding: 30px;
+    }
+    .textInput{
+      color:blue;
+    }
+  </style>
 </head>
 <body>
-  
-  <input id="input" type="text" placeholder="What needs to be done?">
+  <input id="todoInput" type="text" placeholder="What needs to be done?" class="textInput">
   <ul id="list"></ul>
   
   <script>
     // when user hits enter key, print the value of the input box into the list.
 
+
     document.body.onkeyup = function(evt) {
+
       if(evt.keyCode == 13) {
         console.log("Enter pressed!");
 
-        var input = document.getElementById('input');
-        console.log(input);
-        console.log(input.value);
-
+        var input = document.getElementById('todoInput');
         var list = document.getElementById('list');
-
+        if(input.value == '') {
+          return;
+        }
         // create an <li> that will hold our text
         var li = document.createElement('li');
         // create a text node for our text
@@ -30,6 +81,10 @@
         li.appendChild(text);
         // append the li to our ul
         list.appendChild(li);
+        li.onclick = function(e) {
+          this.parentElement.removeChild(this);
+        }
+        input.value = '';
       }
 
     };
